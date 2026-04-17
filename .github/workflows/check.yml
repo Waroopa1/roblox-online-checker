@@ -14,7 +14,7 @@ jobs:
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
 
       - name: Download previous state
-        uses: actions/download-artifact@65a9e8c6f3e6d8b5c7a4f1e3b2c9d8f7e4a1b2c3
+        uses: actions/download-artifact@9bc31d5a1c2f3e4b5d6a7c8e9f0b1a2c3d4e5f6
         with:
           name: state
         continue-on-error: true
