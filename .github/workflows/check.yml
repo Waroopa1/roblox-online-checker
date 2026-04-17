@@ -13,6 +13,12 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
+      - name: Download previous state
+        uses: actions/download-artifact@v3
+        with:
+          name: state
+        continue-on-error: true
+
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
@@ -23,6 +29,13 @@ jobs:
 
       - name: Run script
         env:
-          ROBLOX_USER_ID: ${{ secrets.ROBLOX_USER_ID }}
+          ROBLOX_USER_1: ${{ secrets.ROBLOX_USER_1 }}
+          ROBLOX_USER_2: ${{ secrets.ROBLOX_USER_2 }}
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         run: node check.js
+
+      - name: Upload new state
+        uses: actions/upload-artifact@v3
+        with:
+          name: state
+          path: state.json
